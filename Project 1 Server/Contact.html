@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Metha Marvaniya</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+    :root {
+        --bg: #fff1f5;
+        --card: rgba(255, 255, 255, 0.85);
+        --border: #fbcfe8;
+        --accent: #ec4899;
+        --accent-glow: 0 0 35px rgba(236,72,153,0.45);
+        --text: #1f2937;
+        --muted: #6b7280;
+        --radius: 20px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background: radial-gradient(circle at top, #ffe4e6 0, #fff1f5 55%);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+        position: sticky;
+        top: 0;
+        padding: 18px 50px;
+        background: rgba(255, 241, 245, 0.85);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(14px);
+        z-index: 20;
+    }
+
+    nav a {
+        margin-left: 25px;
+        font-size: 15px;
+        color: var(--muted);
+        text-decoration: none;
+        transition: .25s;
+    }
+
+    nav a:hover,
+    nav a.active {
+        color: var(--accent);
+    }
+
+    /* Contact Card */
+    .contact-box {
+        width: 520px;
+        margin: 90px auto;
+        padding: 40px;
+        background: var(--card);
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(20px);
+        position: relative;
+        box-shadow: 0 30px 80px rgba(236,72,153,0.25);
+        animation: floatUp .8s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(35px); opacity:0; }
+        to { transform: translateY(0); opacity:1; }
+    }
+
+    /* Glow */
+    .glow {
+        position: absolute;
+        top: -90px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(236,72,153,0.4), transparent 70%);
+        filter: blur(35px);
+        animation: pulse 3s infinite ease-in-out;
+        z-index: -1;
+    }
+
+    @keyframes pulse {
+        0% { transform: translateX(-50%) scale(0.9); }
+        50% { transform: translateX(-50%) scale(1.1); }
+        100% { transform: translateX(-50%) scale(0.9); }
+    }
+
+    .contact-box h2 {
+        text-align: center;
+        margin-bottom: 22px;
+        font-size: 28px;
+        font-weight: 600;
+        color: var(--accent);
+    }
+
+    label {
+        font-size: 14px;
+        color: var(--muted);
+        display: block;
+        margin-bottom: 6px;
+        margin-top: 15px;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 14px;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        background: #fff;
+        color: var(--text);
+        font-size: 15px;
+        outline: none;
+        transition: 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: var(--accent);
+        box-shadow: var(--accent-glow);
+    }
+
+    textarea {
+        height: 130px;
+        resize: none;
+    }
+
+    /* Button */
+    .btn {
+        width: 100%;
+        padding: 15px;
+        margin-top: 20px;
+        background: linear-gradient(135deg, #fb7185, #ec4899);
+        border: none;
+        border-radius: var(--radius);
+        color: white;
+        font-size: 17px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: .25s ease;
+        box-shadow: 0 18px 45px rgba(236,72,153,0.45);
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 25px 65px rgba(236,72,153,0.65);
+    }
+
+    /* Social */
+    .social {
+        text-align: center;
+        margin-top: 24px;
+    }
+
+    .social a {
+        margin: 0 12px;
+        font-size: 22px;
+        color: var(--muted);
+        transition: .25s;
+    }
+
+    .social a:hover {
+        color: var(--accent);
+        text-shadow: var(--accent-glow);
+    }
+
+    @media(max-width:550px) {
+        .contact-box {
+            width: 90%;
+            padding: 28px;
+        }
+        header {
+            padding: 18px 18px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2 style="font-weight:600;color:#ec4899;">Metha Marvaniya</h2>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact" class="active">Contact</a>
+    </nav>
+</header>
+
+<div class="contact-box">
+    <div class="glow"></div>
+    <h2>Book Your Nail Appointment 💅</h2>
+
+    <form>
+        <label><i class="fa-solid fa-user"></i> Your Name</label>
+        <input type="text" placeholder="Enter your full name" required>
+
+        <label><i class="fa-solid fa-phone"></i> Mobile Number</label>
+        <input type="tel" placeholder="+91 00000 00000" required>
+
+        <label><i class="fa-solid fa-calendar"></i> Preferred Date</label>
+        <input type="date" required>
+
+        <label><i class="fa-solid fa-message"></i> Nail Requirements</label>
+        <textarea placeholder="Type of nails, occasion, design ideas..." required></textarea>
+
+        <button class="btn" type="submit">
+            Book Appointment <i class="fa-solid fa-heart"></i>
+        </button>
+    </form>
+
+    <div class="social">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+    </div>
+</div>
+
+</body>
+</html>

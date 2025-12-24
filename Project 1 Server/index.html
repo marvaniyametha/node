@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metha Marvaniya | Professional Nail Artist</title>
+
+  <style>
+    :root {
+      --bg-main: #fff1f5;
+      --bg-card: #ffffff;
+      --accent: #ec4899;
+      --accent-soft: rgba(236, 72, 153, 0.18);
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --border-subtle: #fbcfe8;
+      --shadow-soft: 0 25px 55px rgba(236,72,153,0.25);
+      --radius-xl: 22px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #ffe4e6 0, #fff1f5 50%, #fff 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(255,241,245,0.85);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fb7185, #ec4899);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+      box-shadow: 0 0 18px rgba(236,72,153,0.5);
+    }
+
+    .logo-text-main {
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      font-size: 17px;
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      font-size: 14px;
+      color: var(--text-muted);
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .nav-cta {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      font-size: 13px;
+      background: #fff;
+      cursor: pointer;
+      transition: 0.2s ease;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .nav-cta:hover {
+      box-shadow: var(--shadow-soft);
+      transform: translateY(-1px);
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 34px 18px 64px;
+      display: grid;
+      grid-template-columns: 3fr 2.2fr;
+      gap: 26px;
+    }
+
+    @media (max-width: 840px) {
+      main { grid-template-columns: 1fr; }
+    }
+
+    /* HERO */
+    .hero-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      gap: 8px;
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 22px;
+      line-height: 1.6;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .btn-primary {
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 999px;
+      padding: 11px 20px;
+      background: linear-gradient(135deg, #fb7185, #ec4899);
+      color: #fff;
+      box-shadow: 0 18px 30px rgba(236,72,153,0.45);
+      transition: 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 26px 45px rgba(236,72,153,0.6);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 10px 18px;
+      border: 1px solid var(--border-subtle);
+      background: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--accent);
+    }
+
+    .hero-meta-row {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    /* SIDE CARD */
+    .side-card {
+      background: #fff;
+      border-radius: var(--radius-xl);
+      padding: 22px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .profile-header {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fb7185, #ec4899);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 22px;
+    }
+
+    .profile-name {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .profile-role {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .side-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin: 18px 0 8px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .contact-footer {
+      border-top: 1px dashed var(--border-subtle);
+      margin-top: 18px;
+      padding-top: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-container">
+    <div class="logo">
+      <div class="logo-mark">M</div>
+      <div>
+        <div class="logo-text-main">Metha Marvaniya</div>
+        <div class="logo-text-sub">Professional Nail Artist</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});">
+        Book Appointment
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero-card">
+    <div class="hero-badge">✨ Luxury Nail Designs</div>
+
+    <h1 class="hero-title">
+      Creating <span>elegant</span> & <span>trendy</span><br>
+      nail art for every occasion
+    </h1>
+
+    <p class="hero-subtitle">
+      Hi, I’m <strong>Metha Marvaniya</strong>, a professional nail artist
+      specializing in bridal nails, gel extensions and custom luxury designs
+      that enhance your confidence and style.
+    </p>
+
+    <div class="hero-cta-row">
+      <button class="btn-primary">View Nail Work</button>
+      <button class="btn-ghost">Book Now</button>
+    </div>
+
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <strong>Specialised In</strong>
+        Bridal Nails · Gel Extensions · Custom Art
+      </div>
+      <div class="hero-meta-item">
+        <strong>Experience</strong>
+        Professional Nail Artist
+      </div>
+    </div>
+  </section>
+
+  <aside class="side-card">
+    <div class="profile-header">
+      <div class="avatar">MM</div>
+      <div>
+        <div class="profile-name">Metha Marvaniya</div>
+        <div class="profile-role">Nail Artist · Beauty Creator</div>
+      </div>
+    </div>
+
+    <div class="side-title">Services</div>
+    <div class="chip-row">
+      <span class="chip">Gel Nails</span>
+      <span class="chip">Bridal Nails</span>
+      <span class="chip">French Tips</span>
+      <span class="chip">Luxury Art</span>
+    </div>
+
+    <div id="contact" class="contact-footer">
+      <div>
+        Ready to glam your nails?<br>
+        <strong>Let’s book your appointment 💅</strong>
+      </div>
+      <div>
+        <a href="#">Instagram</a> ·
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+  </aside>
+</main>
+
+</body>
+</html>
+            Nails are my canvas, and I pour my creativity into every design.
+            From chic minimalism to intricate art, I tailor each look to
+            reflect your personality and occasion.
+          </p>
+
+          <p>
+            When I’m not busy creating nail magic, you can find me exploring
+            the latest trends, experimenting with new techniques, or sharing
+            nail care tips with my community.
+          </p>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
