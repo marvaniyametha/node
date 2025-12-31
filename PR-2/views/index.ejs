@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nail Task Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #0d1117;
+        color: #fff;
+    }
+
+    header {
+        padding: 18px;
+        background: linear-gradient(135deg, #ff4fd8, #8a2be2);
+        text-align: center;
+        font-size: 28px;
+        font-weight: 600;
+    }
+
+    .main {
+        display: flex;
+        padding: 30px;
+        gap: 30px;
+    }
+
+    .sidebar {
+        width: 360px;
+        background: #161b22;
+        padding: 28px;
+        border-radius: 18px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        border-radius: 10px;
+        border: none;
+        background: #22272e;
+        color: white;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #ff4fd8, #8a2be2);
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    table {
+        width: 100%;
+        background: #161b22;
+        border-radius: 18px;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 14px;
+        text-align: center;
+    }
+
+    .badge-high { background: #ff4d4d; padding: 6px 14px; border-radius: 20px; }
+    .badge-medium { background: #ffa900; padding: 6px 14px; border-radius: 20px; }
+    .badge-low { background: #22c55e; padding: 6px 14px; border-radius: 20px; }
+
+    .action-btn {
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .delete { background: red; color: white; }
+    .edit { background: green; color: white; }
+</style>
+
+<body>
+
+<header>💅 Nail Design Manager</header>
+
+<div class="main">
+
+    <!-- FORM -->
+    <div class="sidebar">
+        <h2>Add Nail Design</h2>
+
+        <form action="/add-nail" method="post">
+            <label>ID</label>
+            <input type="text" name="id">
+
+            <label>Nail Name</label>
+            <input type="text" name="title">
+
+            <label>Nail Description</label>
+            <input type="text" name="description">
+
+            <label>Nail Type</label>
+            <select name="priority">
+                <option>Premium</option>
+                <option>Normal</option>
+                <option>Simple</option>
+            </select>
+
+            <label>Delivery Date</label>
+            <input type="date" name="date">
+
+            <button class="btn">Add Nail</button>
+        </form>
+    </div>
+
+    <!-- TABLE -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nail Name</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Delivery</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% nails.forEach((nail)=>{ %>
+            <tr>
+                <td><%= nail.id %></td>
+                <td><%= nail.title %></td>
+                <td><%= nail.description %></td>
+
+                <td>
+                    <% if(nail.priority === "Premium"){ %>
+                        <span class="badge-high">Premium</span>
+                    <% } else if(nail.priority === "Normal"){ %>
+                        <span class="badge-medium">Normal</span>
+                    <% } else { %>
+                        <span class="badge-low">Simple</span>
+                    <% } %>
+                </td>
+
+                <td><%= nail.date %></td>
+
+                <td>
+                    <a href="/delete-nail/<%= nail.id %>">
+                        <button class="action-btn delete">Delete</button>
+                    </a>
+                    <a href="/edit-nail/<%= nail.id %>">
+                        <button class="action-btn edit">Edit</button>
+                    </a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
