@@ -1,0 +1,91 @@
+<%- include('header') %>
+
+<section class="movie-new-form-section">
+  <div class="movie-new-form-container">
+    <h2>Edit Movie 🎥</h2>
+
+    <form class="movie-new-form"
+      action="/update-moive/<%= Moive.id %>"
+      method="post"
+      enctype="multipart/form-data">
+
+      <!-- Movie Name -->
+      <div class="form-group">
+        <label>Movie Name</label>
+        <input
+          type="text"
+          name="moivename"
+          value="<%= Moive.moivename %>"
+          required />
+      </div>
+
+      <!-- Director -->
+      <div class="form-group">
+        <label>Director Name</label>
+        <input
+          type="text"
+          name="dname"
+          value="<%= Moive.dname %>"
+          required />
+      </div>
+
+      <!-- Language -->
+      <div class="form-group">
+        <label>Main Language</label>
+        <select name="language" required>
+          <option value="">Select Language</option>
+          <option value="english" <%= Moive.language === 'english' ? 'selected' : '' %>>English</option>
+          <option value="hindi" <%= Moive.language === 'hindi' ? 'selected' : '' %>>Hindi</option>
+          <option value="gujarati" <%= Moive.language === 'gujarati' ? 'selected' : '' %>>Gujarati</option>
+        </select>
+      </div>
+
+      <!-- Release Date + Length -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Release Date</label>
+          <input
+            type="date"
+            name="releasedate"
+            value="<%= Moive.releasedate ? Moive.releasedate.toISOString().split('T')[0] : '' %>"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label>Movie Length (Minutes)</label>
+          <input
+            type="number"
+            name="moivelength"
+            value="<%= Moive.moivelength %>"
+            required />
+        </div>
+      </div>
+
+      <!-- Existing Image Preview -->
+      <div class="form-group">
+        <label>Current Movie Image</label><br>
+        <img src="<%= Moive.moiveImage %>" alt="movie"
+          style="width:120px; border-radius:10px; margin-bottom:10px;">
+      </div>
+
+      <!-- New Image -->
+      <div class="form-group">
+        <label>Change Movie Image</label>
+        <input type="file" name="moiveImage" />
+      </div>
+
+      <!-- Overview -->
+      <div class="form-group">
+        <label>Story Overview</label>
+        <textarea
+          name="overview"
+          rows="4"
+          required><%= Moive.overview %></textarea>
+      </div>
+
+      <button type="submit">Update Movie</button>
+    </form>
+  </div>
+</section>
+
+<%- include('footer') %>

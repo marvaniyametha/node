@@ -1,0 +1,76 @@
+<%- include('header')%>
+
+  <section class="hero-new">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-new-content">
+      <span class="hero-badge">🎥 Movie Collection</span>
+      <h1>Discover Movies That<br>Match Your Mood</h1>
+      <p>
+        Explore the latest blockbusters, timeless classics,
+        and trending movies — all in one place.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/moivepage" class="hero-primary-btn">Explore Movies</a>
+        <a href="/trending" class="hero-secondary-btn">Trending Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="movie-showcase-unique">
+    <div class="showcase-header">
+      <h2>🎥 Latest Releases</h2>
+      <p>Recently added movies</p>
+    </div>
+
+    <div class="showcase-grid">
+
+      <% if (Moive && Moive.length> 0) { %>
+        <% Moive.forEach(m=> { %>
+
+          <div class="showcase-item">
+
+            <!-- Movie Poster -->
+            <div class="poster-wrap">
+              <img src="<%= m.moiveImage %>" alt="movie">
+              <span class="lang-tag">
+                <%= m.language %>
+              </span>
+            </div>
+
+            <!-- Floating Info -->
+            <div class="floating-info">
+              <h3>
+                <%= m.moivename %>
+              </h3>
+
+              <span class="meta">
+                🎬 <%= m.dname %> • ⏱ <%= m.moivelength %> min
+              </span>
+
+              <p>
+                <%= m.overview %>
+              </p>
+
+              <div class="action-links">
+                <a href="/edit-moive/<%= m.id %>" class="edit">Edit</a>
+                <a href="/delete-moive/<%= m.id %>" class="delete">Delete</a>
+              </div>
+            </div>
+
+          </div>
+
+          <% }) %>
+            <% } else { %>
+              <p class="empty-msg">No movies available</p>
+              <% } %>
+
+    </div>
+  </section>
+
+
+
+
+
+  <%- include('footer')%>
