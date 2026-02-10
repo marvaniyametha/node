@@ -1,0 +1,255 @@
+<%- include('../header') %>
+
+<style>
+    /* Modern Form Styling */
+    .edit-card {
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        background: #fff;
+    }
+
+    .edit-header {
+        background: linear-gradient(to right, #7460ee, #5c4ac7);
+        padding: 20px 30px;
+        border-radius: 12px 12px 0 0;
+        color: white;
+    }
+
+    .edit-header h4 {
+        color: white;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .form-section {
+        padding: 25px;
+    }
+
+    .form-control {
+        border-radius: 6px;
+        border: 1px solid #dee2e6;
+        padding: 10px 15px;
+        height: auto;
+        background-color: #fcfcfc;
+    }
+
+    .form-control:focus {
+        border-color: #7460ee;
+        background-color: #fff;
+        box-shadow: 0 0 0 3px rgba(116, 96, 238, 0.1);
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+    /* Current Image Preview */
+    .current-image-preview {
+        position: relative;
+        display: inline-block;
+        border: 3px solid #eee;
+        border-radius: 8px;
+        padding: 5px;
+        margin-bottom: 15px;
+        background: #fff;
+    }
+    
+    .current-image-preview img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        max-height: 150px;
+        object-fit: cover;
+    }
+
+    .preview-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #888;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    /* Category Pills */
+    .category-group {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .category-group input[type="radio"] {
+        display: none;
+    }
+
+    .category-group label {
+        cursor: pointer;
+        padding: 8px 20px;
+        border-radius: 50px;
+        background: #f1f2f3;
+        color: #555;
+        font-weight: 500;
+        transition: 0.3s;
+        border: 1px solid transparent;
+    }
+
+    .category-group input[type="radio"]:checked + label {
+        background: #7460ee;
+        color: white;
+        box-shadow: 0 4px 10px rgba(116, 96, 238, 0.3);
+    }
+
+    .btn-update {
+        background: #7460ee;
+        border: none;
+        padding: 12px 50px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .btn-update:hover {
+        background: #6352ce;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(116, 96, 238, 0.3);
+    }
+</style>
+
+<div class="page-wrapper" style="background-color: #edf1f5;">
+    
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb" style="background: transparent;">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Update Blog</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                
+                <form action="/blog/update-blog/<%= blog.id %>" method="post" enctype="multipart/form-data">
+                    <div class="card edit-card">
+                        
+                        <div class="edit-header d-flex justify-content-between align-items-center">
+                            <h4><i class="mdi mdi-pencil-box"></i> Edit Blog Post</h4>
+                            <span class="badge badge-light text-primary">ID: <%= blog.id %></span>
+                        </div>
+
+                        <div class="card-body form-section">
+                            <div class="row">
+                                
+                                <div class="col-md-7 border-right pr-4">
+                                    
+                                    <div class="form-group mb-4">
+                                        <label for="title" class="form-label">Blog Title</label>
+                                        <input type="text" class="form-control" id="title" name="title" value="<%= blog.title %>" placeholder="Title Here" required />
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea class="form-control" id="description" name="description" rows="4" placeholder="Description Here"><%= blog.description %></textarea>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label class="form-label">Category</label>
+                                        <div class="category-group">
+                                            
+                                            <input type="radio" id="cat1" name="category" value="Technology" <%= blog.category === 'Technology' ? 'checked' : "" %> />
+                                            <label for="cat1"><i class="mdi mdi-laptop"></i> Technology</label>
+
+                                            <input type="radio" id="cat2" name="category" value="education" <%= blog.category === 'education' ? 'checked' : "" %> />
+                                            <label for="cat2"><i class="mdi mdi-school"></i> Education</label>
+
+                                            <input type="radio" id="cat3" name="category" value="CareerGuidance" <%= blog.category === 'CareerGuidance' ? 'checked' : "" %> />
+                                            <label for="cat3"><i class="mdi mdi-compass"></i> Career Guidance</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mt-4">
+                                        <label class="form-label">Blog Cover Image</label>
+                                        <div class="d-flex align-items-start">
+                                            <div class="mr-4 text-center">
+                                                <span class="preview-label">Current</span>
+                                                <div class="current-image-preview">
+                                                    <img src="<%= blog.blogImage %>" alt="Current Blog Image">
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <span class="preview-label">Change Image</span>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="blogImageInput" name="blogImage">
+                                                    <label class="custom-file-label" for="blogImageInput">Choose new file...</label>
+                                                    <small class="text-muted">Leave empty to keep current image</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-5 pl-4">
+                                    <h5 class="text-muted mb-4">Author Details</h5>
+
+                                    <div class="form-group mb-4">
+                                        <label for="authorname" class="form-label">Author Name</label>
+                                        <input type="text" class="form-control" id="authorname" name="authorname" value="<%= blog.authorname %>" placeholder="Author Name" />
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="Publish Date" class="form-label">Publish Date</label>
+                                        <input type="date" class="form-control" id="Publish Date" name="publishDate" 
+                                            value="<%= blog.publishDate ? blog.publishDate.toISOString().split('T')[0] : '' %>" />
+                                    </div>
+
+                                    <div class="form-group mt-4">
+                                        <label class="form-label">Author Profile</label>
+                                        <div class="d-flex align-items-center">
+                                            <div class="mr-3">
+                                                <div class="current-image-preview" style="border-radius: 50%; padding: 2px;">
+                                                    <img src="<%= blog.authorImage %>" style="width: 60px; height: 60px; border-radius: 50%;" alt="Author">
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="authorImageInput" name="authorImage">
+                                                    <label class="custom-file-label" for="authorImageInput">Update Avatar</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer bg-white border-top-0 text-center pb-4 pt-0">
+                            <hr class="mt-0 mb-4">
+                            <button type="submit" class="btn btn-primary btn-update">
+                                <i class="mdi mdi-content-save"></i> Save Changes
+                            </button>
+                            <a href="/" class="btn btn-outline-secondary ml-2" style="border-radius: 50px; padding: 12px 30px;">Cancel</a>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../footer') %>

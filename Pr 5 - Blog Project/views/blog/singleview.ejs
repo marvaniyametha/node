@@ -1,0 +1,188 @@
+<%- include('../header') %>
+
+<style>
+    /* Modern Article Layout Styles */
+    .article-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 5px 30px rgba(0,0,0,0.03);
+    }
+
+    .article-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .category-badge {
+        display: inline-block;
+        background-color: #eef2ff;
+        color: #6366f1;
+        padding: 6px 16px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .article-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1a1a1a;
+        line-height: 1.2;
+        margin-bottom: 20px;
+    }
+
+    .article-meta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        color: #6b7280;
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+    }
+
+    .hero-image-container {
+        width: 100%;
+        height: 400px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+
+    .hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .hero-image:hover {
+        transform: scale(1.02);
+    }
+
+    .article-content {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: #374151;
+        font-family: 'Georgia', serif; /* Serif is better for long reading */
+    }
+
+    /* Author Box at Bottom */
+    .author-box {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px solid #eee;
+        display: flex;
+        align-items: center;
+    }
+
+    .author-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+        border: 2px solid #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .back-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #1a1a1a;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s;
+        z-index: 100;
+        text-decoration: none;
+    }
+    
+    .back-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        color: white;
+    }
+</style>
+
+<div class="page-wrapper" style="background-color: #f8f9fa;">
+
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <div class="ml-auto text-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb" style="background: transparent;">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item active">Blog Details</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid pb-5">
+        
+        <div class="article-container">
+            
+            <div class="article-header">
+                <span class="category-badge">
+                    <%= singleview.category %>
+                </span>
+                
+                <h1 class="article-title">
+                    <%= singleview.title %>
+                </h1>
+
+                <div class="article-meta">
+                    <span><i class="mdi mdi-calendar"></i> 
+                        <%= singleview.publishDate ? singleview.publishDate.toLocaleDateString() : 'Recently' %>
+                    </span>
+                    <span>&bull;</span>
+                    <span><i class="mdi mdi-clock-outline"></i> 5 min read</span>
+                </div>
+            </div>
+
+            <div class="hero-image-container">
+                <img src="<%= singleview.blogImage %>" alt="Blog Cover" class="hero-image">
+            </div>
+
+            <div class="article-content">
+                <p>
+                    <%= singleview.description %>
+                </p>
+            </div>
+
+            <div class="author-box">
+                <img src="<%= singleview.authorImage %>" class="author-avatar" alt="Author">
+                <div>
+                    <h6 class="mb-0" style="font-weight: 700; font-size: 16px;">Written by <%= singleview.authorname %></h6>
+                    <small class="text-muted">Content Creator & Blog Author</small>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <a href="/blog/view-blog" class="back-btn" title="Back to Library">
+        <i class="mdi mdi-arrow-left" style="font-size: 24px;"></i>
+    </a>
+
+</div>
+
+<%- include('../footer') %>
